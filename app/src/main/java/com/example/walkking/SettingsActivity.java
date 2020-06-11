@@ -12,11 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class SettingsActivity extends AppCompatActivity implements DialogGender.DialogGenderListener, DialogAge.DialogAgeListener, DialogHeight.DialogHeightListener, DialogWeight.DialogWeightListener {
+public class SettingsActivity extends AppCompatActivity implements DialogGender.DialogGenderListener, DialogAge.DialogAgeListener, DialogHeight.DialogHeightListener, DialogWeight.DialogWeightListener, DialogGoal.DialogGoalListener {
 
     TextView tv_bmr;
 
-    private Button gender_button, age_button, height_button, weight_button;
+    private Button gender_button, age_button, height_button, weight_button, goal_button;
 
 
 
@@ -72,6 +72,15 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
                 openWeightDialog();
             }
         });
+
+
+        goal_button = findViewById(R.id.goal_button);
+        goal_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGoalDialog();
+            }
+        });
     }
 
 
@@ -119,6 +128,12 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
         dialogWeight.show(getSupportFragmentManager(), "weight dialog");
     }
 
+    public void openGoalDialog(){
+        DialogGoal dialogGoal = new DialogGoal();
+        dialogGoal.show(getSupportFragmentManager(), "goal dialog");
+
+    }
+
 
 
     @Override
@@ -135,7 +150,7 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
         }
 
 
-        saveInfo(0, 0, 0, gender1);
+        saveInfo(0, 0, 0, gender1, 0);
         tv_bmr.setText("Your BMR is " + getBMR());
     }
 
@@ -143,7 +158,7 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
     public void applyAge(int ageA) {
         age_button.setText(String.valueOf(ageA));
 
-        saveInfo(ageA, 0, 0, "null");
+        saveInfo(ageA, 0, 0, "null", 0);
         tv_bmr.setText("Your BMR is " + getBMR());
 
     }
@@ -152,7 +167,7 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
     public void applyHeight(int heightA) {
         height_button.setText(String.valueOf(heightA));
 
-        saveInfo(0, 0, heightA, "null");
+        saveInfo(0, 0, heightA, "null", 0);
         tv_bmr.setText("Your BMR is " + getBMR());
     }
 
@@ -160,13 +175,20 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
     public void applyWeight(int weightA) {
         weight_button.setText(String.valueOf(weightA));
 
-        saveInfo(0, weightA, 0, "null");
+        saveInfo(0, weightA, 0, "null", 0);
         tv_bmr.setText("Your BMR is " + getBMR());
+    }
+
+    @Override
+    public void applyGoal(int goal) {
+        saveInfo(0, 0, 0, "null", goal);
+
+
     }
 
 
 
-    public void saveInfo(int ageS, int weightS,int heightS, String genderS){
+    public void saveInfo(int ageS, int weightS,int heightS, String genderS, int goalS){
         SharedPreferences sp = getSharedPreferences("Info", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = sp.edit();
 
@@ -181,6 +203,9 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
         }
         if(!genderS.equals("null")){
             edit.putString("gender", genderS);
+        }
+        if(goalS!=0){
+            edit.putInt("goal",goalS);
         }
         edit.apply();
 
@@ -218,8 +243,6 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
         }
         return true;
     }
-
-
 
 
 

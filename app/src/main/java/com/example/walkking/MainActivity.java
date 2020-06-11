@@ -16,6 +16,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     TextView tv_steps;
     TextView tv_kms;
     TextView tv_calories;
+    TextView tv_goal;
 
     ProgressBar steps_progress;
 
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         tv_steps = findViewById(R.id.tv_steps);
         tv_kms = findViewById(R.id.tv_kms);
         tv_calories = findViewById(R.id.tv_calories);
+        tv_goal = findViewById(R.id.tv_goal);
         steps_progress = findViewById(R.id.stepsProgressBar);
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -75,12 +79,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (running){
+
+            SharedPreferences sp = getSharedPreferences("Info", Context.MODE_PRIVATE);
+
+            timeReset(event);
+
+            int goal = sp.getInt("goal", 0);
+
             tv_steps.setText(String.valueOf(event.values[0]));
             tv_kms.setText(String.valueOf(getKilometers(event)));
             tv_calories.setText(String.valueOf(getCalories(getKilometers(event))));
+            tv_goal.setText(String.valueOf(goal));
 
             float steps = event.values[0];
-            int goal = 1000;
+
 
             if(steps > goal){
                 steps_progress.setProgress(100);
@@ -161,6 +173,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
+    public void timeReset(SensorEvent event ){
+
+        SharedPreferences sp = getSharedPreferences("Info" , Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+
+
+        Calendar calendar = Calendar.getInstance();
+        int hour2 = sp.getInt("hour1",0);
+        edit.putInt("hour2", hour2);
+        int hour1 = calendar.get(Calendar.HOUR_OF_DAY);
+        edit.putInt("hour1",hour1);
+
+        if(hour2>hour1){
+            event.values[0] = 0;
+        }
+    }
 
 
 

@@ -171,4 +171,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        android:background="@drawable/settingbg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bmr">
+
+        <TextView
+            android:id="@+id/tv_edit_goal"
+            android:layout_width="46dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="  Goal"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/goal_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit" />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

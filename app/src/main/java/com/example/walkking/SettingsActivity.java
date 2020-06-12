@@ -39,12 +39,14 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
         height_button = findViewById(R.id.height_button);
         weight_button = findViewById(R.id.weight_button);
 
+        //Setting the text of the buttons to be the value of the variable
         gender_button.setText(sp.getString("gender",""));
-
         age_button.setText(String.valueOf(sp.getInt("age", 0)));
         height_button.setText(String.valueOf(sp.getInt("height", 0)));
         weight_button.setText(String.valueOf(sp.getInt("weight", 0)));
 
+
+        //Creating on click listeners that open each dialog
         gender_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +74,7 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
                 openWeightDialog();
             }
         });
+        //-----------
 
 
         goal_button = findViewById(R.id.goal_button);
@@ -83,7 +86,7 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
         });
     }
 
-
+    //Method that calculates the user's BMR
     public double getBMR(){
 
         SharedPreferences sp = getSharedPreferences("Info", Context.MODE_PRIVATE);
@@ -106,7 +109,7 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
     }
 
 
-
+    //Methods that open each Dialog
     public void openGenderDialog(){
         DialogGender dialogGender = new DialogGender();
         dialogGender.show(getSupportFragmentManager(), "gender dialog");
@@ -133,13 +136,13 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
         dialogGoal.show(getSupportFragmentManager(), "goal dialog");
 
     }
+    //---------
 
 
-
+    //Applying the info
     @Override
     public void applyGender(int gender) {
         String gender1 = "null";
-        //Log.d("Babis", "Value: " + gender);
         if (gender == 0){
             gender_button.setText("Male");
              gender1 = "Male";
@@ -185,9 +188,9 @@ public class SettingsActivity extends AppCompatActivity implements DialogGender.
 
 
     }
+    //---------------
 
-
-
+    //Save the info on sp
     public void saveInfo(int ageS, int weightS,int heightS, String genderS, int goalS){
         SharedPreferences sp = getSharedPreferences("Info", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = sp.edit();

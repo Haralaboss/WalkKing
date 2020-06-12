@@ -1,4 +1,11 @@
+/* Den exoun ulopoiithei ta Achievements kai exoun na prostethoun akoma pragmata sta Statistics pou eixame pei oti tha prosthetame.
+ *
+ * H klasi CounterService uparxei epeidi theloume na prosthesoume Background Services wste na ginetai katametrisi kai otan i efarmogi einai kleisti
+ *
+ * H klasi Menu uparxei epeidi theloume na metakinisoume ekei olo ton kwdika pou afora to Menu apo kathe klasi giati einai polus kwdikas pou tha mporouse na brisketai se ena simeio mono*/
+
 package com.example.walkking;
+
 
 import android.content.Context;
 import android.content.Intent;
@@ -48,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         tv_goal = findViewById(R.id.tv_goal);
         steps_progress = findViewById(R.id.stepsProgressBar);
 
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE); //Creating the sensor manager
 
     }
 
@@ -56,8 +63,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onResume() {
         super.onResume();
         running = true;
-        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER); //Choosing the sensor type
 
+        //Registering the sensor
         if (countSensor != null){
             sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
 
@@ -76,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //sensorManager.unregisterListener(this);
     }
 
+    //Method that updates the data every time the user takes a step
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (running){
@@ -90,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             tv_kms.setText(String.valueOf(getKilometers(event)));
             tv_calories.setText(String.valueOf(getCalories(getKilometers(event))));
             tv_goal.setText(String.valueOf(goal));
+
 
             float steps = event.values[0];
 
@@ -173,6 +183,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
+    //Method to reset the steps and move the days for the statistics when the day changes
     public void timeReset(SensorEvent event ){
 
         SharedPreferences sp = getSharedPreferences("Info" , Context.MODE_PRIVATE);

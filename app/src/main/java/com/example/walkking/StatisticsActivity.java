@@ -64,7 +64,7 @@ public class StatisticsActivity extends AppCompatActivity {
         statistics_chart.invalidate();
 
     }
-
+    //Array for daily steps
     private ArrayList<Entry> statistics() {
 
         SharedPreferences sp = getSharedPreferences("Info" , Context.MODE_PRIVATE);
@@ -82,6 +82,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
     }
 
+    //Array for user's goal
     private ArrayList<Entry> goalLine() {
 
         SharedPreferences sp = getSharedPreferences("Info" , Context.MODE_PRIVATE);
@@ -99,6 +100,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
     }
 
+    //Change the days of the week depending on what day it is
     public String[] getWeek(){
 
         String[] weekdays = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};

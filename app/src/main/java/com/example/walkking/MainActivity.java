@@ -186,8 +186,19 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         edit.putInt("hour1",hour1);
 
         if(hour2>hour1){
+
+            edit.putInt("d0", sp.getInt("d1", 0));
+            edit.putInt("d1", sp.getInt("d2", 0));
+            edit.putInt("d2", sp.getInt("d3", 0));
+            edit.putInt("d3", sp.getInt("d4", 0));
+            edit.putInt("d4", sp.getInt("d5", 0));
+            edit.putInt("d5", sp.getInt("d6", 0));
+            edit.putInt("d6", (int) event.values[0]);
+
             event.values[0] = 0;
         }
+
+        edit.apply();
     }
 
 

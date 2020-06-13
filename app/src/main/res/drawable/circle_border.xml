@@ -7,9 +7,8 @@
         android:thickness="18dp"
         android:useLevel="true">
 
-        <solid android:color="#FFFFFF"/>
-        <stroke android:color="@color/colorPrimaryDark"
-                android:width="2dp"/>
+        <solid android:color="#12637999"/>
+
 
     </shape>
 

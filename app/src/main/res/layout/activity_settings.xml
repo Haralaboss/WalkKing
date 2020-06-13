@@ -25,6 +25,7 @@
             android:id="@+id/tv_gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:text=" Gender"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary"
@@ -40,7 +41,9 @@
         <Button
             android:id="@+id/gender_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@drawable/statsboard"
             android:text="Button"
             android:textAlignment="center"
             android:textColor="#FFFFFF" />
@@ -67,6 +70,7 @@
             android:text=" Age"
             android:textAlignment="textStart"
             android:textColor="@color/colorPrimary"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:textSize="18sp" />
 
         <View
@@ -77,10 +81,11 @@
         <Button
             android:id="@+id/age_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@drawable/statsboard"
             android:text="Button"
             android:textAlignment="center"
-
             android:textColor="#FFFFFF"
             tools:layout_editor_absoluteX="278dp"
             tools:layout_editor_absoluteY="72dp" />
@@ -105,17 +110,20 @@
             android:layout_height="wrap_content"
             android:text=" Height"
             android:textColor="@color/colorPrimary"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:textSize="18sp" />
 
         <View
-            android:layout_width="0dp"
+            android:layout_width="148dp"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
         <Button
             android:id="@+id/height_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@drawable/statsboard"
             android:text="Button"
             android:textColor="#FFFFFF" />
     </LinearLayout>
@@ -123,12 +131,12 @@
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="38dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:orientation="horizontal"
         android:background="@drawable/settingbg"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
@@ -139,6 +147,7 @@
             android:layout_height="wrap_content"
             android:text=" Weight"
             android:textColor="@color/colorPrimary"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:textSize="18sp" />
 
         <View
@@ -149,7 +158,10 @@
         <Button
             android:id="@+id/weight_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@drawable/statsboard"
+            android:elevation="0dp"
             android:text="Button"
             android:textColor="#FFFFFF" />
     </LinearLayout>
@@ -173,12 +185,12 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="37dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:orientation="horizontal"
         android:background="@drawable/settingbg"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_bmr">
@@ -187,11 +199,12 @@
             android:id="@+id/tv_edit_goal"
             android:layout_width="46dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:layout_weight="1"
             android:text="  Goal"
-            android:textAlignment="textStart"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp" />
+
 
         <View
             android:layout_width="0dp"
@@ -201,8 +214,11 @@
         <Button
             android:id="@+id/goal_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit" />
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@drawable/goal_button_bg"
+            android:text="Edit"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
